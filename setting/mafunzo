@@ -1,0 +1,185 @@
+
+MariaDB [(none)]> show databases;
++-----------------------+
+| Database              |
++-----------------------+
+| contactmgt            |
+| dr-certificate-maker  |
+| drinformation         |
+| information_schema    |
+| login                 |
+| march9                |
+| mysql                 |
+| nepdevjd_light        |
+| performance_schema    |
+| phpmyadmin            |
+| registration_database |
+| thecompanydatabase    |
+| valleyview_database   |
++-----------------------+
+13 rows in set (0.002 sec)
+
+MariaDB [(none)]> create database mafunzo;
+Query OK, 1 row affected (0.043 sec)
+
+MariaDB [(none)]> show databases;
++-----------------------+
+| Database              |
++-----------------------+
+| contactmgt            |
+| dr-certificate-maker  |
+| drinformation         |
+| information_schema    |
+| login                 |
+| mafunzo               |
+| march9                |
+| mysql                 |
+| nepdevjd_light        |
+| performance_schema    |
+| phpmyadmin            |
+| registration_database |
+| thecompanydatabase    |
+| valleyview_database   |
++-----------------------+
+14 rows in set (0.002 sec)
+
+MariaDB [(none)]> create table Students(
+    -> RegNo varchar(20) not null primary key,
+    -> StudName varchar(30) not null,
+    -> DateOfBirth date not null,
+    -> DegreeCourse varchar(50) not null);
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> use database mafunzo;
+ERROR 1049 (42000): Unknown database 'database'
+MariaDB [(none)]> use mafunzo;
+Database changed
+MariaDB [mafunzo]> create table Students(
+    -> RegNo varchar(20) not null primary key,
+    -> StudName varchar(30) not null,
+    -> DateOfBirth date not null,
+    -> DegreeCourse varchar(50) not null);
+Query OK, 0 rows affected (0.304 sec)
+
+MariaDB [mafunzo]> show tables;
++-------------------+
+| Tables_in_mafunzo |
++-------------------+
+| students          |
++-------------------+
+1 row in set (0.001 sec)
+
+MariaDB [mafunzo]> insert into students values(
+    -> 'J12/1234/2001','Mary Atieno','1990-1-1','BSc Computer Science'),
+    -> 'J25/9999/2001','Peter Kamau','1998-4-7','BSc Maths'),
+    -> 'J25/9999/2001','Peter Kamau','1998-4-7','BSc Maths'),
+    -> 'P21/4564/2001','Mohammed Aziz','1991-6-7','BSc Chem'),
+    -> 'P21/4565/2001','Jane Waswa','1991-3-4','BSc Chem'),
+    -> 'P21/4566/2001','Moses Araka','1990-5-17','BSc Chem'),
+    -> 'Z100/76786/2001','Joseph musyoka','1990-4-4','BSc Maths, Chem');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''J25/9999/2001','Peter Kamau','1998-4-7','BSc Maths'),
+'J25/9999/2001','Peter...' at line 3
+MariaDB [mafunzo]> insert into students values(
+    -> 'J12/1234/2001','Mary Atieno','1990-1-1','BSc Computer Science'),
+    -> ('J25/9999/2001','Peter Kamau','1998-4-7','BSc Maths'),
+    -> ('P21/4564/2001','Mohammed Aziz','1991-6-7','BSc Chem'),
+    -> ('P21/4565/2001','Jane Waswa','1991-3-4','BSc Chem'),
+    -> ('P21/4566/2001','Moses Araka','1990-5-17','BSc Chem'),
+    -> ('Z100/76786/2001','Joseph musyoka','1990-4-4','BSc Maths, Chem');
+Query OK, 6 rows affected (0.657 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+
+MariaDB [mafunzo]> create table Courses(
+    -> CourseCode varchar(10) not null primary key,
+    -> Title varchar(30) not null unique,
+    -> Dep varchar(20) not null);
+Query OK, 0 rows affected (0.215 sec)
+MariaDB [mafunzo]> insert into Courses values(
+    -> 'SCH301','Physical Chemistry','Chemistry'),
+    -> ('SCH302','Inorganic Chemistry','Chemistry'),
+    -> ('SCH303','Thermodynamics','Chemistry'),
+    -> ('SCO206','Database Systems','CIT'),
+    -> ('SCO207','Computer Programming','CIT'),
+    -> ('SMA100','Basic Mathematics','Mathematics'),
+    -> ('SMA200','Linear Algebra 1','Mathematics');
+Query OK, 7 rows affected (0.078 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+MariaDB [mafunzo]> create table Registration(
+    -> CourseCode varchar(10) not null primary key,
+    -> RegNO varchar(20) not null,
+    -> TotalMarks int not null);
+Query OK, 0 rows affected (0.181 sec)
+
+MariaDB [mafunzo]> insert into Registration values(
+    -> 'SCH301','P21/4564/2001','62'),
+    -> ('SCH301','P21/4565/2001','71'),
+    -> ('SCH302','P21/4564/2001','41'),
+    -> ('SCH302','P21/4565/2001','72'),
+    -> ('SCH302','Z100/76786/2001','35'),
+    -> ('SCH303','J25/9999/2001','50'),
+    -> ('SCH303','P21/4565/2001','75'),
+    -> ('SCO206','J25/9999/2001','30'),
+    -> ('SCO206','J25/9999/2001','40'),
+    -> ('SCO207','J25/9999/2001','50'),
+    -> ('SMA200','J25/9999/2001','60'),
+    -> ('SMA200','Z100/76786/2001','70');
+Query OK, 12 rows affected (0.083 sec)
+Records: 12  Duplicates: 0  Warnings: 0
+
+MariaDB [mafunzo]>
+
+MariaDB [mafunzo]> select*from students;
++-----------------+----------------+-------------+----------------------+
+| RegNo           | StudName       | DateOfBirth | DegreeCourse         |
++-----------------+----------------+-------------+----------------------+
+| J12/1234/2001   | Mary Atieno    | 1990-01-01  | BSc Computer Science |
+| J25/9999/2001   | Peter Kamau    | 1998-04-07  | BSc Maths            |
+| P21/4564/2001   | Mohammed Aziz  | 1991-06-07  | BSc Chem             |
+| P21/4565/2001   | Jane Waswa     | 1991-03-04  | BSc Chem             |
+| P21/4566/2001   | Moses Araka    | 1990-05-17  | BSc Chem             |
+| Z100/76786/2001 | Joseph musyoka | 1990-04-04  | BSc Maths, Chem      |
++-----------------+----------------+-------------+----------------------+
+6 rows in set (0.038 sec)
+
+MariaDB [mafunzo]> select*from courses;
++------------+----------------------+-------------+
+| CourseCode | Title                | Dep         |
++------------+----------------------+-------------+
+| SCH301     | Physical Chemistry   | Chemistry   |
+| SCH302     | Inorganic Chemistry  | Chemistry   |
+| SCH303     | Thermodynamics       | Chemistry   |
+| SCO206     | Database Systems     | CIT         |
+| SCO207     | Computer Programming | CIT         |
+| SMA100     | Basic Mathematics    | Mathematics |
+| SMA200     | Linear Algebra 1     | Mathematics |
++------------+----------------------+-------------+
+7 rows in set (0.001 sec)
+
+MariaDB [mafunzo]> select*from registration;
++------------+-----------------+------------+
+| CourseCode | RegNO           | TotalMarks |
++------------+-----------------+------------+
+| SCH301     | P21/4564/2001   |         62 |
+| SCH301     | P21/4565/2001   |         71 |
+| SCH302     | P21/4564/2001   |         41 |
+| SCH302     | P21/4565/2001   |         72 |
+| SCH302     | Z100/76786/2001 |         35 |
+| SCH303     | J25/9999/2001   |         50 |
+| SCH303     | P21/4565/2001   |         75 |
+| SCO206     | J25/9999/2001   |         30 |
+| SCO206     | J25/9999/2001   |         40 |
+| SCO207     | J25/9999/2001   |         50 |
+| SMA200     | J25/9999/2001   |         60 |
+| SMA200     | Z100/76786/2001 |         70 |
++------------+-----------------+------------+
+12 rows in set (0.001 sec)
+
+MariaDB [mafunzo]>
+
+
+
+
+
+
+

@@ -1,0 +1,41 @@
+body{
+	padding: 10px;
+	margin: 0px;
+	background-color: white;
+
+}
+
+#fm{
+	margin: 20px;
+	padding: 30px;
+	text-align: center;
+	margin-left:300px;
+	margin-right: 300px;
+background: linear-gradient(27deg, 	greenyellow 50%, purple 50%);
+height: auto;
+width: auto;
+}
+.algtable label{
+	width: 100px;
+	
+}
+#fm #title{
+	font-size: 35px;
+	font-weight: 600;
+	line-height: 50px;
+	background: linear-gradient(-139deg,greenyellow,blue);
+	text-align: center;
+	color: white;
+}
+.error{
+	background: mintcream;
+	color: red;
+	padding: 10px;
+	width: 90%
+	border-radius: 5px;
+}
+#fm 
+h5{
+text-align: center;
+color: blak;
+font-size: 30px

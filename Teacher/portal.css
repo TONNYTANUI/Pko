@@ -1,0 +1,136 @@
+body{
+	margin: 0px;
+	padding: 0px;
+	display: grid;
+	place-items: left;
+	background-color: white;
+}
+.my_menu-bar{
+     width: 100%;
+     margin: 0px;
+    height: 150px;
+    background-color: darkblue;}
+
+.menu-bar li{
+    list-style: none;
+    width: 150px;
+    height: 70px;
+    background-color: darkcyan;
+    margin: 0px;
+    text-align: center;
+    line-height: 50px;
+    float: left;
+
+}
+.logo{
+    width: 120px;
+    text-align: left;
+    height: 100px;
+
+
+}
+
+ .div_section1{
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    padding: 0px;
+   float: left;
+   left margin: 0px;
+    border: 1px solid black;
+
+}
+h1{font-size: 25px;
+    text-align: center;
+    margin: 0px;
+    color: white;
+    margin-left: 0;
+}
+.div_section2{
+    width: 400px;
+    height: 100px;
+    margin: 20px;
+    padding: 0px;
+   float: left;
+   margin-left: 0px;
+
+}
+P{font-size: 25px;
+    text-align: center;
+    margin: 0px;
+    color: yellow;
+}
+.div_section3{
+    width: 240px;
+    height: 100px;
+    margin: 20px;
+    padding: 0px;
+   float: left;
+   margin-left: 0px;}
+h2{
+    font-size: 20px;
+    text-align: right;
+    margin: 20px;
+    color: white;
+    margin-left: 0;}
+h3{
+    font-size: 20px;
+    text-align:center;
+    margin: 20px;
+    color: white;
+    margin-left: 0;}
+    .div_section4{
+        width: 300px;
+         height: auto;
+         margin: 10px;
+         padding: 0px;
+          margin-left: 1px;
+          border: 1px solid black;
+          border-bottom: 30px solid green;
+          background-color: darkblue;
+
+    }
+ 
+
+    #portalmenu li{
+        list-style: none;
+        display: block;
+        font-size: 20px;
+        text-align: left;
+        line-height: 30px;
+        margin: 10px;
+        
+    }
+     #portalmenu a{
+        text-decoration: none;
+        color: white;
+        display: block;
+        padding:3px;
+
+     }
+     
+#portalmenu li a:hover{
+    background-color: darkcyan;
+    border-radius: 5px;
+    margin: 0px;
+    width: 100%;
+
+}
+#portalmenu li a:hover{
+color: red;}
+
+#portalmenu ul{
+display: none;
+}
+#portalmenu li:hover ul{
+    display: block;
+}
+
+
+
+
+
+
+     
+      
+ 
